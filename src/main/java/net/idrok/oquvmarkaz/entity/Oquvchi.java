@@ -104,9 +104,7 @@ public class Oquvchi {
     }
 
     public void setTulov(Boolean tulov) {
-        if(this.tulov == null){
-            this.tulov = false;
-        }
+        this.tulov = tulov;
     }
 
     public Guruh getGuruh() {
