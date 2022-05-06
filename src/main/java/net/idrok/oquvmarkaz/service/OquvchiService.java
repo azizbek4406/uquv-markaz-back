@@ -19,6 +19,9 @@ public class OquvchiService {
     }
     public Oquvchi create(Oquvchi oquvchi){
         if(oquvchi.getId() == null){
+            if (oquvchi.getTulov() == null){
+                oquvchi.setTulov(false);
+            }
             return oquvchiRepository.save(oquvchi);
         }
         throw new RuntimeException("O`quvchida id bulishi shart");
