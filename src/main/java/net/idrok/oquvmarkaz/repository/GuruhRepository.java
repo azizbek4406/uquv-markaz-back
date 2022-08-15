@@ -17,4 +17,8 @@ public interface GuruhRepository extends JpaRepository<Guruh, Long>{
 
     @Query("FROM Guruh g WHERE UPPER(g.nom) like '%' || UPPER(:key) || '%' or UPPER(g.oqituvchi.ism) like '%' || UPPER(:key) || '%' or UPPER(g.oqituvchi.familiya) like '%' || UPPER(:key) || '%' or UPPER(g.info) like '%' || UPPER(:key) || '%'")
     Page<Guruh> getAllWithKey(@Param("key") String key, Pageable pageable);
+
+//    Page<Guruh> findAllByActive(Boolean active, Pageable pageable);
+
+    Page<Guruh> findAllByOqituvchiId(Long id, Pageable pageable);
 }

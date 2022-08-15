@@ -1,6 +1,7 @@
 package net.idrok.oquvmarkaz.repository;
 
 
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,10 @@ public interface OqituvchiRepository extends JpaRepository<Oqituvchi, Long>{
 
     @Query("FROM Oqituvchi o WHERE UPPER(o.ism) like '%' || UPPER(:key) || '%' or UPPER(o.familiya) like '%' || UPPER(:key) || '%' or UPPER(o.fan) like '%' || UPPER(:key) || '%' or UPPER(o.info) like '%' || UPPER(:key) || '%'")
     Page<Oqituvchi> getAllWithKey(@Param("key") String key, Pageable pageable);
+
+//    Page<Oqituvchi> findAllByActive(Boolean active, Pageable pageable);
+
+
+
+
 }

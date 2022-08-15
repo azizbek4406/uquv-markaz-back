@@ -1,6 +1,7 @@
 package net.idrok.oquvmarkaz.service;
 
 
+import net.idrok.oquvmarkaz.entity.Oquvchi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,11 @@ public class OqituvchiService {
     public Page<Oqituvchi> getAll(String key, Pageable pageable){
         return oqituvchiRepository.getAllWithKey(key, pageable);
     }
+
+//    public Page<Oqituvchi> getAllByActive(Boolean active, Pageable pageable) {
+//        return oqituvchiRepository.findAllByActive(active, pageable);
+//    }
+
     public Oqituvchi create(Oqituvchi oqituvchi){
         if(oqituvchi.getId() == null){
             return oqituvchiRepository.save(oqituvchi);

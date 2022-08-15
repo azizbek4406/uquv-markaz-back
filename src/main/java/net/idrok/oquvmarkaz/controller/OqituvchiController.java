@@ -1,6 +1,7 @@
 package net.idrok.oquvmarkaz.controller;
 
 
+import net.idrok.oquvmarkaz.entity.Oquvchi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +32,12 @@ public class OqituvchiController {
         if(key == null) key = "";
         return oqituvchiService.getAll(key, pageable);
     }
+
+//    @GetMapping("/active/{active}")
+//    public Page<Oqituvchi> getAllByActive(@PathVariable Boolean active, Pageable pageable) {
+//        return oqituvchiService.getAllByActive(active, pageable);
+//    }
+
     @PostMapping
     public Oqituvchi create(@RequestBody Oqituvchi oqituvchi){
         return oqituvchiService.create(oqituvchi);

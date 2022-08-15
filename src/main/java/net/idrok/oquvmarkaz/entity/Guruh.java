@@ -30,6 +30,19 @@ public class Guruh {
 
     private String info;
 
+    public Guruh() {
+    }
+
+    public Guruh(Long id, String nom, String darsVaqti, LocalDate sana, Oqituvchi oqituvchi, String info) {
+        this.id = id;
+        this.nom = nom;
+        this.darsVaqti = darsVaqti;
+        this.sana = sana;
+        this.oqituvchi = oqituvchi;
+        this.info = info;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -54,8 +67,6 @@ public class Guruh {
         this.darsVaqti = darsVaqti;
     }
 
-   
-    
     public LocalDate getSana() {
         return sana;
     }
@@ -79,6 +90,4 @@ public class Guruh {
     public void setInfo(String info) {
         this.info = info;
     }
-
-    
 }

@@ -1,7 +1,6 @@
 package net.idrok.oquvmarkaz.service;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,10 +12,14 @@ import net.idrok.oquvmarkaz.service.dto.GuruhDTO;
 
 @Service
 public class GuruhService {
-    @Autowired
-    GuruhRepository guruhRepository;
-    @Autowired
-    OquvchiRepository oquvchiRepository;
+
+    private final GuruhRepository guruhRepository;
+    private final OquvchiRepository oquvchiRepository;
+
+    public GuruhService(GuruhRepository guruhRepository, OquvchiRepository oquvchiRepository) {
+        this.guruhRepository = guruhRepository;
+        this.oquvchiRepository = oquvchiRepository;
+    }
 
     public Page<GuruhDTO> getAll(String key, Pageable pageable){
         Page<Guruh> g = guruhRepository.getAllWithKey(key, pageable);
@@ -24,9 +27,27 @@ public class GuruhService {
                 GuruhDTO gd = new GuruhDTO(t);
                 gd.setOquvchiSon(oquvchiRepository.countByGuruhId(t.getId()));
                 return gd;
-         } );
+         });
 
     }
+//    public Page<GuruhDTO> getAllByActive(Boolean active, Pageable pageable) {
+//        Page<Guruh> g = guruhRepository.findAllByActive(active, pageable);
+//        return g.map(t -> {
+//            GuruhDTO gd = new GuruhDTO(t);
+//            gd.setOquvchiSon(oquvchiRepository.countByGuruhId(t.getId()));
+//            return gd;
+//        });
+//    }
+
+    public Page<GuruhDTO> getAllByOqituvchiId(Long id, Pageable pageable) {
+        Page<Guruh> g = guruhRepository.findAllByOqituvchiId(id, pageable);
+        return g.map(t -> {
+            GuruhDTO gd = new GuruhDTO(t);
+            gd.setOquvchiSon(oquvchiRepository.countByGuruhId(t.getId()));
+            return gd;
+        });
+    }
+
     public Guruh create(Guruh guruh){
         if(guruh.getId() == null){
             return guruhRepository.save(guruh);

@@ -26,7 +26,7 @@ public class GuruhDTO{
         this.info = g.getInfo();
         this.oqituvchi = g.getOqituvchi();
         this.sana = g.getSana();
-    
+
         
     }
 
@@ -85,7 +85,4 @@ public class GuruhDTO{
     public void setInfo(String info) {
         this.info = info;
     }
-
-    
-
 }

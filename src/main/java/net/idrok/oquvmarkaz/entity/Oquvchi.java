@@ -1,13 +1,9 @@
 package net.idrok.oquvmarkaz.entity;
 
 import java.time.LocalDate;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Oquvchi {
@@ -34,12 +30,34 @@ public class Oquvchi {
     @Column(nullable = false)
     private String jins;
 
-    private Boolean tulov;
+
 
     @ManyToOne
     private Guruh guruh;
 
+    @ManyToOne
+    private Fayl fayl;
+
     private String info;
+
+    private Boolean tulovVaqtKeldi;
+
+    public Oquvchi() {
+    }
+
+    public Oquvchi(Long id, String ism, String familiya, Long telNomer, LocalDate kelganKuni, Long kelishilganSumma, String jins, Guruh guruh, Fayl fayl, String info, Boolean tulovVaqtKeldi) {
+        this.id = id;
+        this.ism = ism;
+        this.familiya = familiya;
+        this.telNomer = telNomer;
+        this.kelganKuni = kelganKuni;
+        this.kelishilganSumma = kelishilganSumma;
+        this.jins = jins;
+        this.guruh = guruh;
+        this.fayl = fayl;
+        this.info = info;
+        this.tulovVaqtKeldi = tulovVaqtKeldi;
+    }
 
     public Long getId() {
         return id;
@@ -65,7 +83,13 @@ public class Oquvchi {
         this.familiya = familiya;
     }
 
-    
+    public Long getTelNomer() {
+        return telNomer;
+    }
+
+    public void setTelNomer(Long telNomer) {
+        this.telNomer = telNomer;
+    }
 
     public LocalDate getKelganKuni() {
         return kelganKuni;
@@ -73,22 +97,6 @@ public class Oquvchi {
 
     public void setKelganKuni(LocalDate kelganKuni) {
         this.kelganKuni = kelganKuni;
-    }
-
-    public String getJins() {
-        return jins;
-    }
-
-    public void setJins(String jins) {
-        this.jins = jins;
-    }
-
-    public Long getTelNomer() {
-        return telNomer;
-    }
-
-    public void setTelNomer(Long telNomer) {
-        this.telNomer = telNomer;
     }
 
     public Long getKelishilganSumma() {
@@ -99,12 +107,12 @@ public class Oquvchi {
         this.kelishilganSumma = kelishilganSumma;
     }
 
-    public Boolean getTulov() {
-        return tulov;
+    public String getJins() {
+        return jins;
     }
 
-    public void setTulov(Boolean tulov) {
-        this.tulov = tulov;
+    public void setJins(String jins) {
+        this.jins = jins;
     }
 
     public Guruh getGuruh() {
@@ -115,6 +123,14 @@ public class Oquvchi {
         this.guruh = guruh;
     }
 
+    public Fayl getFayl() {
+        return fayl;
+    }
+
+    public void setFayl(Fayl fayl) {
+        this.fayl = fayl;
+    }
+
     public String getInfo() {
         return info;
     }
@@ -123,10 +139,11 @@ public class Oquvchi {
         this.info = info;
     }
 
-   
+    public Boolean getTulovVaqtKeldi() {
+        return tulovVaqtKeldi;
+    }
 
-    
-   
-    
-    
+    public void setTulovVaqtKeldi(Boolean tulovVaqtKeldi) {
+        this.tulovVaqtKeldi = tulovVaqtKeldi;
+    }
 }

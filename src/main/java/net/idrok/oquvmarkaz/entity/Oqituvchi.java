@@ -22,7 +22,20 @@ public class Oqituvchi {
     @Column(nullable = false)
     private String fan;
 
+
+
     private String info;
+
+    public Oqituvchi() {
+    }
+
+    public Oqituvchi(Long id, String ism, String familiya, String fan, String info) {
+        this.id = id;
+        this.ism = ism;
+        this.familiya = familiya;
+        this.fan = fan;
+        this.info = info;
+    }
 
     public Long getId() {
         return id;
@@ -63,7 +76,4 @@ public class Oqituvchi {
     public void setInfo(String info) {
         this.info = info;
     }
-
-    
-    
 }
